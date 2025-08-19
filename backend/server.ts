@@ -5,6 +5,7 @@ const PORT = ENV.PORT;
 
 const server = app.listen(PORT, () => {
   console.log(`✅ X Clone started on port ${PORT}`);
+  console.log(`🌍 Environment: ${ENV.NODE_ENV}`);
 });
 
 // Handle exit server express with SIGINT signal (Ctrl + C)

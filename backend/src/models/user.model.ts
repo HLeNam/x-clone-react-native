@@ -1,23 +1,9 @@
-import { Document, Model, model, models, ObjectId, Schema } from 'mongoose';
-
-interface UserType extends Document {
-  clerkId: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  username: string;
-  profilePicture?: string;
-  bannerImage?: string;
-  bio?: string;
-  location?: string;
-  followers?: ObjectId[];
-  following?: ObjectId[];
-}
+import { Model, model, models, Schema, InferSchemaType } from 'mongoose';
 
 const DOCUMENT_NAME = 'User';
 const COLLECTION_NAME = 'users';
 
-const userSchema = new Schema<UserType>(
+const userSchema = new Schema(
   {
     clerkId: {
       type: String,
@@ -89,6 +75,8 @@ const userSchema = new Schema<UserType>(
     collection: COLLECTION_NAME
   }
 );
+
+type UserType = InferSchemaType<typeof userSchema>;
 
 const User: Model<UserType> = models[DOCUMENT_NAME] || model<UserType>(DOCUMENT_NAME, userSchema);
 
