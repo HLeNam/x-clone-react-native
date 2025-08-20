@@ -4,8 +4,8 @@
   "main": "server.js",
   "scripts": {
     "dev": "npx nodemon",
-    "build": "rimraf ./dist && tsc && tsc-alias",
-    "start": "node dist/server.js",
+    "build": "rimraf ./dist && tsc && tsc-alias NODE_ENV=production",
+    "start": "node dist/server.js NODE_ENV=production",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check .",
