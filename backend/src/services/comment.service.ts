@@ -13,7 +13,7 @@ class CommentService {
       post: new ObjectId(postId)
     })
       .sort({ createdAt: -1 })
-      .populate('User', 'username firstName lastName profilePicture')
+      .populate('user', 'username firstName lastName profilePicture')
       .lean();
 
     return {

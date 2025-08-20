@@ -56,6 +56,12 @@ class RedisErrorResponse extends ErrorResponse {
   }
 }
 
+class TooManyRequestsError extends ErrorResponse {
+  constructor(message = ReasonPhrase.TOO_MANY_REQUESTS, statusCode = StatusCodes.TOO_MANY_REQUESTS) {
+    super(message, statusCode);
+  }
+}
+
 export {
   ConflictRequestError,
   BadRequestError,
@@ -63,5 +69,6 @@ export {
   NotFoundError,
   ForbiddenError,
   ErrorResponse,
-  RedisErrorResponse
+  RedisErrorResponse,
+  TooManyRequestsError
 };

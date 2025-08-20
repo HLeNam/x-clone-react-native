@@ -13,11 +13,11 @@ class PostService {
   getPosts = async () => {
     const posts = Post.find()
       .sort({ createdAt: -1 })
-      .populate('User', 'username firstName lastName profilePicture')
+      .populate('user', 'username firstName lastName profilePicture')
       .populate({
         path: 'comments',
         populate: {
-          path: 'User',
+          path: 'user',
           select: 'username firstName lastName profilePicture'
         }
       })
@@ -28,11 +28,11 @@ class PostService {
 
   getPostById = async (postId: string) => {
     const post = await Post.findById(postId)
-      .populate('User', 'username firstName lastName profilePicture')
+      .populate('user', 'username firstName lastName profilePicture')
       .populate({
         path: 'comments',
         populate: {
-          path: 'User',
+          path: 'user',
           select: 'username firstName lastName profilePicture'
         }
       })
@@ -56,11 +56,11 @@ class PostService {
 
     const posts = await Post.find({ user: user._id })
       .sort({ createdAt: -1 })
-      .populate('User', 'username firstName lastName profilePicture')
+      .populate('user', 'username firstName lastName profilePicture')
       .populate({
         path: 'comments',
         populate: {
-          path: 'User',
+          path: 'user',
           select: 'username firstName lastName profilePicture'
         }
       })
