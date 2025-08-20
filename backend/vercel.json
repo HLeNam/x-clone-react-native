@@ -1,9 +1,14 @@
 {
   "version": 2,
+  "outputDirectory": "dist",
   "builds": [
     {
       "src": "server.ts",
-      "use": "@vercel/node"
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["dist/**"],
+        "buildCommand": "npm run build"
+      }
     }
   ],
   "routes": [
