@@ -1,6 +1,6 @@
 // import arcjet, { tokenBucket, shield, detectBot } from '@arcjet/node';
 
-import { ENV } from '~/config/env';
+import { ENV } from '../config/env';
 
 export const aj = async () => {
   // dynamic import

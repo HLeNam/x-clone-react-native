@@ -1,11 +1,11 @@
 import { ObjectId } from 'mongodb';
-import { ENotification } from '~/constants/enum';
-import { BadRequestError, ForbiddenError, NotFoundError } from '~/core/error.response';
+import { ENotification } from '../constants/enum';
+import { BadRequestError, ForbiddenError, NotFoundError } from '../core/error.response';
 
-import Comment from '~/models/comment.model';
-import Notification from '~/models/notification.model';
-import Post from '~/models/post.model';
-import User from '~/models/user.model';
+import Comment from '../models/comment.model';
+import Notification from '../models/notification.model';
+import Post from '../models/post.model';
+import User from '../models/user.model';
 
 class CommentService {
   getCommentsByPostId = async (postId: string) => {

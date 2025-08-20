@@ -1,9 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
 import { ParamsDictionary } from 'express-serve-static-core';
 
-import { UserType } from '~/models/user.model';
-import userService from '~/services/user.service';
-import { SuccessResponse } from '~/core/success.response';
+import { UserType } from '../models/user.model';
+import userService from '../services/user.service';
+import { SuccessResponse } from '../core/success.response';
 
 class UserController {
   getUserProfile = async (req: Request<{ username: string }>, res: Response, _next: NextFunction) => {

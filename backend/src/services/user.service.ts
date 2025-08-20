@@ -1,10 +1,10 @@
-import User, { UserType } from '~/models/user.model';
-import { ConflictRequestError, NotFoundError } from '~/core/error.response';
+import User, { UserType } from '../models/user.model';
+import { ConflictRequestError, NotFoundError } from '../core/error.response';
 import { clerkClient } from '@clerk/express';
-import { Created, SuccessResponse } from '~/core/success.response';
+import { Created, SuccessResponse } from '../core/success.response';
 import { ObjectId } from 'mongodb';
-import Notification from '~/models/notification.model';
-import { ENotification } from '~/constants/enum';
+import Notification from '../models/notification.model';
+import { ENotification } from '../constants/enum';
 
 class UserService {
   getUserProfile = async (username: string) => {

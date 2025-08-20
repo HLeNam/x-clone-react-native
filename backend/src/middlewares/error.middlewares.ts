@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import httpStatusCode from '~/constants/httpStatusCode';
+import httpStatusCode from '../constants/httpStatusCode';
 // import _ from 'lodash';
-// import httpStatus from '~/constants/httpStatus';
-// import { EntityError, ErrorWithStatus } from '~/models/Errors';
+// import httpStatus from '../constants/httpStatus';
+// import { EntityError, ErrorWithStatus } from '../models/Errors';
 
 interface BaseError extends Error {
   status?: number;

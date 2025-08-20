@@ -1,8 +1,8 @@
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 
-import { protectRoute } from '~/middlewares/auth.middleware';
-import notificationController from '~/controllers/notification.controller';
+import { protectRoute } from '../middlewares/auth.middleware';
+import notificationController from '../controllers/notification.controller';
 
 const notificationRouter = express.Router();
 

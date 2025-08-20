@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 
-import { SuccessResponse } from '~/core/success.response';
-import notificationService from '~/services/notification.service';
+import { SuccessResponse } from '../core/success.response';
+import notificationService from '../services/notification.service';
 
 class NotificationController {
   getNotifications = async (req: Request, res: Response, _next: NextFunction) => {

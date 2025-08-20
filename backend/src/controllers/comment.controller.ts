@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 
-import commentService from '~/services/comment.service';
-import { SuccessResponse } from '~/core/success.response';
+import commentService from '../services/comment.service';
+import { SuccessResponse } from '../core/success.response';
 
 class CommentController {
   getCommentsByPostId = async (req: Request, res: Response, _next: NextFunction) => {

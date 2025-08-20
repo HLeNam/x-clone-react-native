@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { ENV } from '~/config/env';
+import { ENV } from '../config/env';
 
 class Database {
   private static instance: Database;

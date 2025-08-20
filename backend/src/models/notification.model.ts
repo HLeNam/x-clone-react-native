@@ -1,5 +1,5 @@
 import { Schema, model, models, InferSchemaType, Model } from 'mongoose';
-import { ENotification } from '~/constants/enum';
+import { ENotification } from '../constants/enum';
 
 const DOCUMENT_NAME = 'Notification';
 const COLLECTION_NAME = 'notifications';

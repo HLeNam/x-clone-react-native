@@ -1,13 +1,13 @@
 import { ObjectId } from 'mongodb';
 
-import Post from '~/models/post.model';
-import User from '~/models/user.model';
-import cloudinary from '~/config/cloudinary';
-import { BadRequestError, ForbiddenError, NotFoundError } from '~/core/error.response';
-import Notification from '~/models/notification.model';
-import { ENotification } from '~/constants/enum';
-import { SuccessResponse } from '~/core/success.response';
-import Comment from '~/models/comment.model';
+import Post from '../models/post.model';
+import User from '../models/user.model';
+import cloudinary from '../config/cloudinary';
+import { BadRequestError, ForbiddenError, NotFoundError } from '../core/error.response';
+import Notification from '../models/notification.model';
+import { ENotification } from '../constants/enum';
+import { SuccessResponse } from '../core/success.response';
+import Comment from '../models/comment.model';
 
 class PostService {
   getPosts = async () => {

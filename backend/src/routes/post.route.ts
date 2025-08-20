@@ -1,9 +1,9 @@
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 
-import postController from '~/controllers/post.controller';
-import { protectRoute } from '~/middlewares/auth.middleware';
-import { uploadConfigs, uploadMiddleware } from '~/middlewares/upload.middleware';
+import postController from '../controllers/post.controller';
+import { protectRoute } from '../middlewares/auth.middleware';
+import { uploadConfigs, uploadMiddleware } from '../middlewares/upload.middleware';
 
 const postRouter = express.Router();
 

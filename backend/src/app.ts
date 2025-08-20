@@ -6,9 +6,9 @@ import helmet from 'helmet';
 import express from 'express';
 import compression from 'compression';
 
-import routes from '~/routes';
-import Database from '~/config/db';
-import { defaultErrorHandler } from '~/middlewares/error.middlewares';
+import routes from './routes';
+import Database from './config/db';
+import { defaultErrorHandler } from './middlewares/error.middlewares';
 
 const app = express();
 

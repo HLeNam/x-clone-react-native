@@ -1,8 +1,8 @@
 import { ObjectId } from 'mongodb';
 
-import User from '~/models/user.model';
-import { NotFoundError } from '~/core/error.response';
-import Notification from '~/models/notification.model';
+import User from '../models/user.model';
+import { NotFoundError } from '../core/error.response';
+import Notification from '../models/notification.model';
 
 class NotificationService {
   getNotifications = async (userId: string) => {

@@ -1,5 +1,5 @@
-import StatusCodes from '~/constants/statusCodes';
-import ReasonPhrase from '~/constants/reasonPhrases';
+import StatusCodes from '../constants/statusCodes';
+import ReasonPhrase from '../constants/reasonPhrases';
 
 const STATUS_CODE = {
   FORBIDDEN: 403,

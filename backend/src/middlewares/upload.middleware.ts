@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import { Request } from 'express';
 import { v4 as uuidv4 } from 'uuid';
-import { BadRequestError } from '~/core/error.response';
+import { BadRequestError } from '../core/error.response';
 
 export interface UploadConfig {
   maxFileSize: number;

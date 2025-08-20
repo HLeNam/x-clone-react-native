@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import { ParamsDictionary } from 'express-serve-static-core';
 
-import postService from '~/services/post.service';
-import { Created, SuccessResponse } from '~/core/success.response';
+import postService from '../services/post.service';
+import { Created, SuccessResponse } from '../core/success.response';
 
 class PostController {
   getPosts = async (_req: Request, res: Response, _next: NextFunction) => {

@@ -1,8 +1,8 @@
 import express from 'express';
 import expressAsyncHandler from 'express-async-handler';
 
-import { protectRoute } from '~/middlewares/auth.middleware';
-import commentController from '~/controllers/comment.controller';
+import { protectRoute } from '../middlewares/auth.middleware';
+import commentController from '../controllers/comment.controller';
 
 const commentRouter = express.Router();
 
