@@ -5,7 +5,8 @@ import { ForbiddenError, TooManyRequestsError } from '~/core/error.response';
 
 export const arcjetMiddleware = async (req: Request, _res: Response, next: NextFunction) => {
   try {
-    const decision = await aj.protect(req, {
+    const arcjet = await aj();
+    const decision = await arcjet.protect(req, {
       requested: 1 // each request consumes 1 token
     });
 
