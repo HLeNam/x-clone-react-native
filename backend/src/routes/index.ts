@@ -13,6 +13,10 @@ router.use(clerkMiddleware());
 
 router.use(arcjetMiddleware);
 
+router.get('/', (_req, res) => {
+  res.send('Hello World!');
+});
+
 router.use('/users', userRoutes);
 router.use('/posts', postRoutes);
 router.use('/comments', commentRoutes);
