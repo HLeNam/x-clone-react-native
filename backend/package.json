@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "npx nodemon",
     "build": "rimraf ./dist && tsc && tsc-alias NODE_ENV=production",
-    "start": "node dist/server.js NODE_ENV=production",
+    "start": "node -r tsconfig-paths/register dist/server.js NODE_ENV=production",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check .",
@@ -50,6 +50,7 @@
     "mongoose": "^8.17.1",
     "morgan": "^1.10.1",
     "multer": "^2.0.2",
+    "tsconfig-paths": "^4.2.0",
     "uuid": "^11.1.0"
   }
 }

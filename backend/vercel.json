@@ -4,11 +4,7 @@
   "builds": [
     {
       "src": "server.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["dist/**"],
-        "buildCommand": "npm run build"
-      }
+      "use": "@vercel/node"
     }
   ],
   "routes": [
