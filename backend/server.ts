@@ -1,5 +1,3 @@
-import 'tsconfig-paths/register';
-
 import app from './src/app';
 import { ENV } from './src/config/env';
 

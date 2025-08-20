@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "npx nodemon",
     "build": "rimraf ./dist && tsc && tsc-alias NODE_ENV=production",
-    "start": "node -r tsconfig-paths/register dist/server.js NODE_ENV=production",
+    "start": "node dist/server.js NODE_ENV=production",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --check .",
@@ -19,6 +19,7 @@
     "@eslint/js": "^9.33.0",
     "@types/compression": "^1.8.1",
     "@types/cors": "^2.8.19",
+    "@types/module-alias": "^2.0.4",
     "@types/morgan": "^1.9.10",
     "@types/multer": "^2.0.0",
     "@types/node": "^24.3.0",
@@ -47,10 +48,10 @@
     "express": "^5.1.0",
     "express-async-handler": "^1.2.0",
     "helmet": "^8.1.0",
+    "module-alias": "^2.2.3",
     "mongoose": "^8.17.1",
     "morgan": "^1.10.1",
     "multer": "^2.0.2",
-    "tsconfig-paths": "^4.2.0",
     "uuid": "^11.1.0"
   }
 }
