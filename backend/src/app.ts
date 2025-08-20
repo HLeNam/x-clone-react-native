@@ -1,4 +1,4 @@
-import './alias';
+// import './alias';
 
 import cors from 'cors';
 import morgan from 'morgan';
