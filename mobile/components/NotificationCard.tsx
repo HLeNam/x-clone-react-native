@@ -12,10 +12,6 @@ const NotificationCard = ({
   notification,
   onDelete,
 }: NotificationCardProps) => {
-  console.log(
-    "🚀 ~ NotificationCard ~ notification:",
-    notification.post?.image,
-  );
   const getNotificationText = () => {
     const name = `${notification.from.firstName} ${notification.from.lastName}`;
     switch (notification.type) {

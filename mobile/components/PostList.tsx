@@ -6,7 +6,11 @@ import { Post } from "@/types";
 import { useState } from "react";
 import { View, Text, ActivityIndicator, TouchableOpacity } from "react-native";
 
-const PostList = () => {
+interface PostListProps {
+  username?: string;
+}
+
+const PostList = ({ username }: PostListProps) => {
   const { currentUser } = useCurrentUser();
   const {
     posts,
@@ -16,7 +20,7 @@ const PostList = () => {
     toggleLike,
     deletePost,
     checkIsLiked,
-  } = usePosts();
+  } = usePosts(username || "");
 
   const [selectedPostId, setSelectedPostId] = useState<string | null>(null);
 
@@ -54,8 +58,6 @@ const PostList = () => {
       </View>
     );
   }
-
-  console.log("🚀 ~ PostList ~ posts:", posts);
 
   return (
     <>

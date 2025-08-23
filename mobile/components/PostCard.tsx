@@ -21,9 +21,9 @@ const PostCard = ({
   currentUser,
   isLiked,
 }: PostCardProps) => {
-  const isOwnPost = post.user._id === currentUser._id;
+  const isOwnPost = post?.user?._id === currentUser?._id;
 
-  const fullName = `${post.user.firstName} ${post.user.lastName}`;
+  const fullName = `${post?.user?.firstName} ${post?.user?.lastName}`;
 
   const handleDelete = () => {
     Alert.alert("Delete Post", "Are you sure you want to delete this post?", [

@@ -3,7 +3,13 @@ export interface User {
   username: string;
   firstName: string;
   lastName: string;
+  bannerImage?: string;
   profilePicture?: string;
+  bio?: string;
+  location?: string;
+  createdAt?: string;
+  followers?: string[];
+  following?: string[];
 }
 
 export interface Comment {

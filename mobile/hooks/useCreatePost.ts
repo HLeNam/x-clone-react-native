@@ -51,6 +51,10 @@ const useCreatePost = () => {
       queryClient.invalidateQueries({
         queryKey: ["posts"],
       });
+      // invalidate all user posts
+      queryClient.invalidateQueries({
+        queryKey: ["userPosts"],
+      });
       Alert.alert("Success", "Post created successfully!");
     },
     onError: () => {

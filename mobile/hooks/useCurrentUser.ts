@@ -1,3 +1,4 @@
+import { User } from "@/types";
 import { useApiClient, userApi } from "@/utils/api";
 import { useQuery } from "@tanstack/react-query";
 
@@ -17,7 +18,7 @@ const useCurrentUser = () => {
   });
 
   return {
-    currentUser,
+    currentUser: currentUser as User,
     isLoadingCurrentUser,
     currentUserError,
     refetchCurrentUser,

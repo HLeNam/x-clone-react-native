@@ -1,7 +1,7 @@
 import { postApi, useApiClient } from "@/utils/api";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-const usePosts = () => {
+const usePosts = (username?: string) => {
   const api = useApiClient();
   const queryClient = useQueryClient();
 
@@ -12,8 +12,9 @@ const usePosts = () => {
     refetch,
   } = useQuery({
     // eslint-disable-next-line @tanstack/query/exhaustive-deps
-    queryKey: ["posts"],
-    queryFn: () => postApi.getPosts(api),
+    queryKey: username ? ["userPosts", username] : ["posts"],
+    queryFn: () =>
+      username ? postApi.getUserPosts(api, username) : postApi.getPosts(api),
     select: (response) => response.data.metadata.posts,
   });
 
@@ -74,13 +75,16 @@ const usePosts = () => {
     onError: (err, postId, context) => {
       // Rollback trên error
       if (context?.previousPosts) {
-        queryClient.setQueryData(["posts"], context.previousPosts);
+        queryClient.setQueryData(
+          username ? ["userPosts", username] : ["posts"],
+          context.previousPosts,
+        );
       }
     },
 
     onSettled: () => {
       queryClient.invalidateQueries({
-        queryKey: ["posts"],
+        queryKey: username ? ["userPosts", username] : ["posts"],
       });
     },
   });
@@ -91,37 +95,47 @@ const usePosts = () => {
     // optimistic update
     onMutate: async (postId: string) => {
       // Hủy bỏ các queries đang chạy để tránh conflict
-      await queryClient.cancelQueries({ queryKey: ["posts"] });
+      await queryClient.cancelQueries({
+        queryKey: username ? ["userPosts", username] : ["posts"],
+      });
 
       // Lấy previous posts (đã được transform bởi select)
-      const previousPosts = queryClient.getQueryData(["posts"]) as any[];
+      const previousPosts = queryClient.getQueryData(
+        username ? ["userPosts", username] : ["posts"],
+      ) as any[];
 
       // Optimistically update posts
-      queryClient.setQueryData(["posts"], (old: any) => {
-        if (!old) return old;
+      queryClient.setQueryData(
+        username ? ["userPosts", username] : ["posts"],
+        (old: any) => {
+          if (!old) return old;
 
-        const updatedPosts = old.data.metadata.posts.filter(
-          (post: any) => post._id !== postId,
-        );
+          const updatedPosts = old.data.metadata.posts.filter(
+            (post: any) => post._id !== postId,
+          );
 
-        return {
-          ...old,
-          data: {
-            ...old.data,
-            metadata: {
-              ...old.data.metadata,
-              posts: updatedPosts,
+          return {
+            ...old,
+            data: {
+              ...old.data,
+              metadata: {
+                ...old.data.metadata,
+                posts: updatedPosts,
+              },
             },
-          },
-        };
-      });
+          };
+        },
+      );
 
       return { previousPosts };
     },
 
     onError: (err, postId, context) => {
       if (context?.previousPosts) {
-        queryClient.setQueryData(["posts"], context.previousPosts);
+        queryClient.setQueryData(
+          username ? ["userPosts", username] : ["posts"],
+          context.previousPosts,
+        );
       }
     },
 
@@ -130,7 +144,7 @@ const usePosts = () => {
         queryKey: ["posts"],
       });
       queryClient.invalidateQueries({
-        queryKey: ["userPosts"],
+        queryKey: ["userPosts", username],
       });
     },
   });
