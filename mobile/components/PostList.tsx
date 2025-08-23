@@ -1,0 +1,70 @@
+import PostCard from "@/components/PostCard";
+import useCurrentUser from "@/hooks/useCurrentUser";
+import usePosts from "@/hooks/usePosts";
+import { Post } from "@/types";
+import { View, Text, ActivityIndicator, TouchableOpacity } from "react-native";
+
+const PostList = () => {
+  const { currentUser } = useCurrentUser();
+  const {
+    posts,
+    isLoading,
+    error,
+    refetch,
+    toggleLike,
+    deletePost,
+    checkIsLiked,
+  } = usePosts();
+
+  if (isLoading) {
+    return (
+      <View className="items-center p-8">
+        <ActivityIndicator size="large" color="#1DA1F2" />
+        <Text className="mt-2 text-gray-500">Loading posts...</Text>
+      </View>
+    );
+  }
+
+  if (error) {
+    return (
+      <View className="items-center p-8">
+        <Text className="mb-4 text-gray-500">Failed to load posts</Text>
+        <TouchableOpacity
+          className="rounded-lg bg-blue-500 px-4 py-2"
+          onPress={() => refetch()}
+        >
+          <Text className="font-semibold text-white">Retry</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  if (!posts || posts.length === 0) {
+    return (
+      <View className="items-center p-8">
+        <Text className="text-gray-500">No posts yet</Text>
+      </View>
+    );
+  }
+
+  console.log("🚀 ~ PostList ~ posts:", posts);
+
+  return (
+    <>
+      {posts.map((post: Post) => {
+        return (
+          <PostCard
+            key={post._id}
+            post={post}
+            onLike={toggleLike}
+            onDelete={deletePost}
+            currentUser={currentUser}
+            isLiked={checkIsLiked(post.likes, currentUser)}
+          />
+        );
+      })}
+    </>
+  );
+};
+
+export default PostList;
